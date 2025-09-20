@@ -17,8 +17,7 @@ class MenuSeeder extends Seeder
                 "position" => 1,
                 "parent_id" => null,
                 "is_active" => true,
-                "created_at" => now(),
-                "updated_at" => now()
+                "created_at" => now()
             ],
             [
                 "id" => 2,
@@ -27,8 +26,16 @@ class MenuSeeder extends Seeder
                 "position" => 2,
                 "parent_id" => null,
                 "is_active" => true,
-                "created_at" => now(),
-                "updated_at" => now()
+                "created_at" => now()
+            ],
+            [
+                "id"=> 3,
+                "title"=> "Bài viết",
+                "alias" => "Blogs",
+                "position" => 3,
+                "parent_id" => null,
+                "is_active" => true,
+                "created_at" => now()
             ]
         ]);
     }

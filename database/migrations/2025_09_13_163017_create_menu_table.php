@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
-            $table->string('Title');
-            $table->string('Alias');
-            $table->integer('Position');
-            $table->boolean('Is_Active')->default(true);
+            $table->string('title');
+            $table->string('alias');
+            $table->integer('position');
+            $table->boolean('is_active')->default(true);
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->timestamps();
         });

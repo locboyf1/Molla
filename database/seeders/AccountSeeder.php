@@ -21,7 +21,7 @@ class AccountSeeder extends Seeder
                 'role_id' => 1,
                 'is_active' => true,
                 'created_at' => now(),
-                'updated_at' => now()
+                'messenger'=>"Đọc bài viết và để lại bình luận để tôi có động lực viết thêm thật hay nhé"
             ]
         ]);
     }

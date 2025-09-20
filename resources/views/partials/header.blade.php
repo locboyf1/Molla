@@ -208,28 +208,28 @@
                 <nav class="main-nav">
                     <ul class="menu sf-arrows">
                         @foreach ($menus as $menu)
-                            <li class="{{ $active == $menu->Alias ? "active" : "" }}">
-                                @if($menu->Children->isNotEmpty())
-                                    <a href="/{{ $menu->Alias }}" class="sf-with-ul">{{ $menu->Title }}</a>
+                            <li class="{{ $active == $menu->alias ? "active" : "" }}">
+                                @if($menu->children->isNotEmpty())
+                                    <a href="/{{ $menu->alias }}" class="sf-with-ul">{{ $menu->title }}</a>
                                     <ul>
-                                        @foreach($menu->Children as $menu2)
-                                            @if($menu2->Children->isNotEmpty())
+                                        @foreach($menu->children as $menu2)
+                                            @if($menu2->children->isNotEmpty())
                                                 <li>
-                                                    <a href="/{{ $menu2->Alias }}" class="sf-with-ul">{{$menu2->Title}}</a>
+                                                    <a href="/{{ $menu2->alias }}" class="sf-with-ul">{{$menu2->title}}</a>
 
                                                     <ul>
-                                                        @foreach($menu2->Children as $menu3)
-                                                            <li><a href="/{{ $menu3->Alias }}">{{ $menu3->Title }}</a></li>
+                                                        @foreach($menu2->children as $menu3)
+                                                            <li><a href="/{{ $menu3->alias }}">{{ $menu3->title }}</a></li>
                                                         @endforeach
                                                     </ul>
                                                 </li>
                                             @else
-                                                <li><a href="/{{ $menu2->Alias }}">{{$menu2->Title}}</a></li>
+                                                <li><a href="/{{ $menu2->alias }}">{{$menu2->title}}</a></li>
                                             @endif
                                         @endforeach
                                     </ul>
                                 @else
-                                    <a href="/{{ $menu->Alias }}" class="">{{ $menu->Title }}</a>
+                                    <a href="/{{ $menu->alias }}" class="">{{ $menu->title }}</a>
                                 @endif
                             </li>
                         @endforeach

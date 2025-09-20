@@ -10,4 +10,9 @@ class Blog extends Model
     {
         return $this->belongsTo(CategoryBlog::class);
     }
+    public function account(){
+        return $this->belongsTo(Account::class);
+    }
+
+    
 }

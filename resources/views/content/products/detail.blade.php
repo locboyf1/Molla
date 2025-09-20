@@ -1,4 +1,3 @@
-
 @extends("content.app")
 @section('title', $product->title)
 @section('content')
@@ -31,9 +30,9 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="product-gallery product-gallery-separated">
-                             
-                                    <span class="product-label label-sale">Giảm giá</span>
-                                
+                                @if( time()- $product->created_at->timestamp < 60*60*24*14)
+                                    <span class="product-label label-new">Mới</span>
+                                @endif
                                 <figure class="product-separated-item">
                                     <img src="{{ asset($product->image1) }}"
                                         data-zoom-image="{{ asset('assets/images/products/single/sticky/1-big.jpg') }}"
@@ -70,7 +69,8 @@
 
                                 <div class="ratings-container">
                                     <div class="ratings">
-                                        <div class="ratings-val" style="width: {{$product->star * 20}}%;"></div><!-- End .ratings-val -->
+                                        <div class="ratings-val" style="width: {{$product->star * 20}}%;"></div>
+                                        <!-- End .ratings-val -->
                                     </div><!-- End .ratings -->
                                     <a class="ratings-text" href="#product-accordion" id="review-link">( 2 Reviews )</a>
                                 </div><!-- End .rating-container -->
@@ -158,7 +158,7 @@
                                             <div class="card-body">
                                                 <div class="product-desc-content">
                                                     {!! $product->description !!}
-                                            </div><!-- End .product-desc-content -->
+                                                </div><!-- End .product-desc-content -->
                                             </div><!-- End .card-body -->
                                         </div><!-- End .collapse -->
                                     </div><!-- End .card -->
@@ -320,30 +320,30 @@
                 <h2 class="title text-center mb-4">You May Also Like</h2><!-- End .title text-center -->
                 <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl"
                     data-owl-options='{
-                                "nav": false, 
-                                "dots": true,
-                                "margin": 20,
-                                "loop": false,
-                                "responsive": {
-                                    "0": {
-                                        "items":1
-                                    },
-                                    "480": {
-                                        "items":2
-                                    },
-                                    "768": {
-                                        "items":3
-                                    },
-                                    "992": {
-                                        "items":4
-                                    },
-                                    "1200": {
-                                        "items":4,
-                                        "nav": true,
-                                        "dots": false
+                                    "nav": false, 
+                                    "dots": true,
+                                    "margin": 20,
+                                    "loop": false,
+                                    "responsive": {
+                                        "0": {
+                                            "items":1
+                                        },
+                                        "480": {
+                                            "items":2
+                                        },
+                                        "768": {
+                                            "items":3
+                                        },
+                                        "992": {
+                                            "items":4
+                                        },
+                                        "1200": {
+                                            "items":4,
+                                            "nav": true,
+                                            "dots": false
+                                        }
                                     }
-                                }
-                            }'>
+                                }'>
                     <div class="product product-7">
                         <figure class="product-media">
                             <span class="product-label label-new">New</span>
