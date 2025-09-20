@@ -11,7 +11,7 @@ Route::get("/Home", [HomeController::class,"index"]);
 
 Route::prefix("Products")->group(function () {
     Route::get("/", [ProductController::class,"index"]);
-    Route::get("/{id}/{alias}.html", [ProductController::class,"detail"])->name('products.detail');
+    Route::get("/{id}/{alias}/{option?}.html", [ProductController::class,"detail"])->name('products.detail');
 });
 
 Route::prefix("Blogs")->group(function () {

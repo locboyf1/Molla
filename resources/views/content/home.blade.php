@@ -5,7 +5,8 @@
 @section('content')
 
     <div class="intro-slider-container mb-5">
-        <div class="intro-slider owl-carousel owl-theme owl-nav-inside owl-light" data-toggle="owl" data-owl-options='{
+        <div class="intro-slider owl-carousel owl-theme owl-nav-inside owl-light" data-toggle="owl"
+            data-owl-options='{
                                                             "dots": true,
                                                             "nav": false, 
                                                             "responsive": {
@@ -72,7 +73,6 @@
         <div class="cat-blocks-container">
             <div class="row">
                 @foreach ($category_products as $category_product)
-
                     <div class="col-6 col-sm-4 col-lg-2">
                         <a href="category.html" class="cat-block">
                             <figure>
@@ -155,7 +155,6 @@
                             aria-controls="all-tab" aria-selected="true">Tất cả</a>
                     </li>
                     @foreach ($category_products as $category_product)
-
                         <li class="nav-item">
                             <a class="nav-link" id="{{ $category_product->alias }}-link" data-toggle="tab"
                                 href="#{{ $category_product->alias }}-tab" role="tab"
@@ -201,10 +200,11 @@
                         <div class="product product-2">
 
                             <figure class="product-media">
-                                @if(time() - $product->created_at->timestamp < 60 * 60 * 24 * 14)
+                                @if (time() - $product->created_at->timestamp < 60 * 60 * 24 * 14)
                                     <span class="product-label label-circle label-new">Mới</span>
                                 @endif
-                                <a href="{{ route('products.detail', ['id' => $product->id, 'alias' => $product->alias]) }}">
+                                <a
+                                    href="{{ route('products.detail', ['id' => $product->id, 'alias' => $product->alias, 'option' => 1]) }}">
                                     <img src="{{ $product->image1 }}" alt="Product image" class="product-image">
                                 </a>
 
@@ -225,7 +225,7 @@
                                     <a href="#">{{ $product->category_product->title }}</a>
                                 </div>
                                 <h3 class="product-title"><a
-                                        href="{{ route('products.detail', ['id' => $product->id, 'alias' => $product->alias]) }}">{{ $product->title }}</a>
+                                        href="{{ route('products.detail', ['id' => $product->id, 'alias' => $product->alias, 'option' => 1]) }}">{{ $product->title }}</a>
                                 </h3>
                                 <div class="product-price">
                                     @if ($temp)
@@ -241,7 +241,7 @@
                                 </div>
                                 <div class="ratings-container">
                                     <div class="ratings">
-                                        <div class="ratings-val" style="width: {{  $product->star * 20 }}%;">
+                                        <div class="ratings-val" style="width: {{ $product->star * 20 }}%;">
                                         </div>
                                     </div>
                                     <span class="ratings-text">( 4 Reviews )</span>
@@ -252,7 +252,6 @@
                 </div>
             </div>
             @foreach ($category_products as $category_product)
-
                 <div class="tab-pane p-0 fade" id="{{ $category_product->alias }}-tab" role="tabpanel"
                     aria-labelledby="{{ $category_product->alias }}-link">
                     <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
@@ -286,15 +285,17 @@
                             @endphp
                             <div class="product product-2">
                                 <figure class="product-media">
-                                    @if(time() - $product->created_at->timestamp < 60 * 60 * 24 * 14)
+                                    @if (time() - $product->created_at->timestamp < 60 * 60 * 24 * 14)
                                         <span class="product-label label-circle label-new">Mới</span>
                                     @endif
-                                    <a href="{{ route('products.detail', ['id' => $product->id, 'alias' => $product->alias]) }}">
+                                    <a
+                                        href="{{ route('products.detail', ['id' => $product->id, 'alias' => $product->alias, 'option' => 1]) }}">
                                         <img src="{{ $product->image1 }}" alt="Product image" class="product-image">
                                     </a>
 
                                     <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                        <a href="#" class="btn-product-icon btn-wishlist"
+                                            title="Add to wishlist"></a>
                                     </div>
 
                                     <div class="product-action">
@@ -310,7 +311,7 @@
                                         <a href="#">{{ $category_product->title }}</a>
                                     </div>
                                     <h3 class="product-title"><a
-                                            href="{{ route('products.detail', ['id' => $product->id, 'alias' => $product->alias]) }}">{{ $product->title }}</a>
+                                            href="{{ route('products.detail', ['id' => $product->id, 'alias' => $product->alias, 'option' => 1]) }}">{{ $product->title }}</a>
                                     </h3>
                                     <div class="product-price">
                                         @if ($temp)
@@ -326,7 +327,7 @@
                                     </div>
                                     <div class="ratings-container">
                                         <div class="ratings">
-                                            <div class="ratings-val" style="width: {{$product->star * 20 }}%;"></div>
+                                            <div class="ratings-val" style="width: {{ $product->star * 20 }}%;"></div>
                                         </div>
                                         <span class="ratings-text">( 4 Reviews )</span>
                                     </div>
@@ -336,7 +337,6 @@
 
                     </div>
                 </div>
-
             @endforeach
         </div>
     </div>
@@ -426,7 +426,8 @@
 
     <div class="container">
         <hr class="mb-0">
-        <div class="owl-carousel mt-5 mb-5 owl-simple" data-toggle="owl" data-owl-options='{
+        <div class="owl-carousel mt-5 mb-5 owl-simple" data-toggle="owl"
+            data-owl-options='{
                                                             "nav": false, 
                                                             "dots": false,
                                                             "margin": 30,
@@ -513,7 +514,8 @@
                     <div class="tab-content tab-content-carousel just-action-icons-sm">
                         <div class="tab-pane p-0 fade show active" id="trending-top-tab" role="tabpanel"
                             aria-labelledby="trending-top-link">
-                            <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
+                            <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow"
+                                data-toggle="owl"
                                 data-owl-options='{
                                                                                 "nav": true, 
                                                                                 "dots": false,
@@ -538,12 +540,13 @@
                                     <figure class="product-media">
                                         <span class="product-label label-circle label-top">Top</span>
                                         <a href="product.html">
-                                            <img src="assets/images/demos/demo-4/products/product-6.jpg" alt="Product image"
-                                                class="product-image">
+                                            <img src="assets/images/demos/demo-4/products/product-6.jpg"
+                                                alt="Product image" class="product-image">
                                         </a>
 
                                         <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                                title="Add to wishlist"></a>
                                         </div>
 
                                         <div class="product-action">
@@ -585,12 +588,13 @@
                                 <div class="product product-2">
                                     <figure class="product-media">
                                         <a href="product.html">
-                                            <img src="assets/images/demos/demo-4/products/product-7.jpg" alt="Product image"
-                                                class="product-image">
+                                            <img src="assets/images/demos/demo-4/products/product-7.jpg"
+                                                alt="Product image" class="product-image">
                                         </a>
 
                                         <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                                title="Add to wishlist"></a>
                                         </div>
 
                                         <div class="product-action">
@@ -624,12 +628,13 @@
                                     <figure class="product-media">
                                         <span class="product-label label-circle label-new">New</span>
                                         <a href="product.html">
-                                            <img src="assets/images/demos/demo-4/products/product-8.jpg" alt="Product image"
-                                                class="product-image">
+                                            <img src="assets/images/demos/demo-4/products/product-8.jpg"
+                                                alt="Product image" class="product-image">
                                         </a>
 
                                         <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                                title="Add to wishlist"></a>
                                         </div>
 
                                         <div class="product-action">
@@ -674,12 +679,13 @@
                                         <span class="product-label label-circle label-top">Top</span>
                                         <span class="product-label label-circle label-sale">Sale</span>
                                         <a href="product.html">
-                                            <img src="assets/images/demos/demo-4/products/product-9.jpg" alt="Product image"
-                                                class="product-image">
+                                            <img src="assets/images/demos/demo-4/products/product-9.jpg"
+                                                alt="Product image" class="product-image">
                                         </a>
 
                                         <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                                title="Add to wishlist"></a>
                                         </div>
 
                                         <div class="product-action">
@@ -714,12 +720,13 @@
                                     <figure class="product-media">
                                         <span class="product-label label-circle label-new">New</span>
                                         <a href="product.html">
-                                            <img src="assets/images/demos/demo-4/products/product-3.jpg" alt="Product image"
-                                                class="product-image">
+                                            <img src="assets/images/demos/demo-4/products/product-3.jpg"
+                                                alt="Product image" class="product-image">
                                         </a>
 
                                         <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                                title="Add to wishlist"></a>
                                         </div>
 
                                         <div class="product-action">
@@ -762,7 +769,8 @@
                         </div>
                         <div class="tab-pane p-0 fade" id="trending-best-tab" role="tabpanel"
                             aria-labelledby="trending-best-link">
-                            <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
+                            <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow"
+                                data-toggle="owl"
                                 data-owl-options='{
                                                                                 "nav": true, 
                                                                                 "dots": false,
@@ -787,12 +795,13 @@
                                     <figure class="product-media">
                                         <span class="product-label label-circle label-new">New</span>
                                         <a href="product.html">
-                                            <img src="assets/images/demos/demo-4/products/product-3.jpg" alt="Product image"
-                                                class="product-image">
+                                            <img src="assets/images/demos/demo-4/products/product-3.jpg"
+                                                alt="Product image" class="product-image">
                                         </a>
 
                                         <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                                title="Add to wishlist"></a>
                                         </div>
 
                                         <div class="product-action">
@@ -835,12 +844,13 @@
                                 <div class="product product-2">
                                     <figure class="product-media">
                                         <a href="product.html">
-                                            <img src="assets/images/demos/demo-4/products/product-2.jpg" alt="Product image"
-                                                class="product-image">
+                                            <img src="assets/images/demos/demo-4/products/product-2.jpg"
+                                                alt="Product image" class="product-image">
                                         </a>
 
                                         <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                                title="Add to wishlist"></a>
                                         </div>
 
                                         <div class="product-action">
@@ -875,12 +885,13 @@
                                         <span class="product-label label-circle label-top">Top</span>
                                         <span class="product-label label-circle label-sale">Sale</span>
                                         <a href="product.html">
-                                            <img src="assets/images/demos/demo-4/products/product-4.jpg" alt="Product image"
-                                                class="product-image">
+                                            <img src="assets/images/demos/demo-4/products/product-4.jpg"
+                                                alt="Product image" class="product-image">
                                         </a>
 
                                         <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                                title="Add to wishlist"></a>
                                         </div>
 
                                         <div class="product-action">
@@ -924,12 +935,13 @@
                                     <figure class="product-media">
                                         <span class="product-label label-circle label-top">Top</span>
                                         <a href="product.html">
-                                            <img src="assets/images/demos/demo-4/products/product-5.jpg" alt="Product image"
-                                                class="product-image">
+                                            <img src="assets/images/demos/demo-4/products/product-5.jpg"
+                                                alt="Product image" class="product-image">
                                         </a>
 
                                         <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                                title="Add to wishlist"></a>
                                         </div>
 
                                         <div class="product-action">
@@ -963,12 +975,13 @@
                                     <figure class="product-media">
                                         <span class="product-label label-circle label-top">Top</span>
                                         <a href="product.html">
-                                            <img src="assets/images/demos/demo-4/products/product-1.jpg" alt="Product image"
-                                                class="product-image">
+                                            <img src="assets/images/demos/demo-4/products/product-1.jpg"
+                                                alt="Product image" class="product-image">
                                         </a>
 
                                         <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                                title="Add to wishlist"></a>
                                         </div>
 
                                         <div class="product-action">
@@ -1001,7 +1014,8 @@
                         </div>
                         <div class="tab-pane p-0 fade" id="trending-sale-tab" role="tabpanel"
                             aria-labelledby="trending-sale-link">
-                            <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
+                            <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow"
+                                data-toggle="owl"
                                 data-owl-options='{
                                                                                 "nav": true, 
                                                                                 "dots": false,
@@ -1026,12 +1040,13 @@
                                     <figure class="product-media">
                                         <span class="product-label label-circle label-new">New</span>
                                         <a href="product.html">
-                                            <img src="assets/images/demos/demo-4/products/product-8.jpg" alt="Product image"
-                                                class="product-image">
+                                            <img src="assets/images/demos/demo-4/products/product-8.jpg"
+                                                alt="Product image" class="product-image">
                                         </a>
 
                                         <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                                title="Add to wishlist"></a>
                                         </div>
 
                                         <div class="product-action">
@@ -1075,12 +1090,13 @@
                                     <figure class="product-media">
                                         <span class="product-label label-circle label-top">Top</span>
                                         <a href="product.html">
-                                            <img src="assets/images/demos/demo-4/products/product-6.jpg" alt="Product image"
-                                                class="product-image">
+                                            <img src="assets/images/demos/demo-4/products/product-6.jpg"
+                                                alt="Product image" class="product-image">
                                         </a>
 
                                         <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                                title="Add to wishlist"></a>
                                         </div>
 
                                         <div class="product-action">
@@ -1122,12 +1138,13 @@
                                 <div class="product product-2">
                                     <figure class="product-media">
                                         <a href="product.html">
-                                            <img src="assets/images/demos/demo-4/products/product-7.jpg" alt="Product image"
-                                                class="product-image">
+                                            <img src="assets/images/demos/demo-4/products/product-7.jpg"
+                                                alt="Product image" class="product-image">
                                         </a>
 
                                         <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                                title="Add to wishlist"></a>
                                         </div>
 
                                         <div class="product-action">
@@ -1161,12 +1178,13 @@
                                     <figure class="product-media">
                                         <span class="product-label label-circle label-new">New</span>
                                         <a href="product.html">
-                                            <img src="assets/images/demos/demo-4/products/product-3.jpg" alt="Product image"
-                                                class="product-image">
+                                            <img src="assets/images/demos/demo-4/products/product-3.jpg"
+                                                alt="Product image" class="product-image">
                                         </a>
 
                                         <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                                title="Add to wishlist"></a>
                                         </div>
 
                                         <div class="product-action">
@@ -1266,7 +1284,8 @@
                             </div>
 
                             <div class="product-nav product-nav-dots">
-                                <a href="#" class="active" style="background: #666666;"><span class="sr-only">Color
+                                <a href="#" class="active" style="background: #666666;"><span
+                                        class="sr-only">Color
                                         name</span></a>
                                 <a href="#" style="background: #ff887f;"><span class="sr-only">Color
                                         name</span></a>
@@ -1360,7 +1379,8 @@
                             </div>
 
                             <div class="product-nav product-nav-dots">
-                                <a href="#" class="active" style="background: #e2e2e2;"><span class="sr-only">Color
+                                <a href="#" class="active" style="background: #e2e2e2;"><span
+                                        class="sr-only">Color
                                         name</span></a>
                                 <a href="#" style="background: #333333;"><span class="sr-only">Color
                                         name</span></a>
@@ -1486,7 +1506,8 @@
                             </div>
 
                             <div class="product-nav product-nav-dots">
-                                <a href="#" class="active" style="background: #ef837b;"><span class="sr-only">Color
+                                <a href="#" class="active" style="background: #ef837b;"><span
+                                        class="sr-only">Color
                                         name</span></a>
                                 <a href="#" style="background: #333333;"><span class="sr-only">Color
                                         name</span></a>
@@ -1536,7 +1557,8 @@
                             </div>
 
                             <div class="product-nav product-nav-dots">
-                                <a href="#" class="active" style="background: #666666;"><span class="sr-only">Color
+                                <a href="#" class="active" style="background: #666666;"><span
+                                        class="sr-only">Color
                                         name</span></a>
                                 <a href="#" style="background: #ff887f;"><span class="sr-only">Color
                                         name</span></a>
@@ -1607,18 +1629,19 @@
                 <div class="col-sm-6 col-lg-3">
                     <article class="entry entry-grid">
                         <figure class="entry-media">
-                            <a href="{{ route("blogs.detail", ["id"=>$blog->id,"alias"=>$blog->alias]) }}">
-                                <img src="{{ $blog->image }}" alt="{{$blog->title}}">
+                            <a href="{{ route('blogs.detail', ['id' => $blog->id, 'alias' => $blog->alias]) }}">
+                                <img src="{{ $blog->image }}" alt="{{ $blog->title }}">
                             </a>
                         </figure><!-- End .entry-media -->
 
                         <div class="entry-body text-center">
                             <div class="entry-meta">
-                                <a href="#">{{$blog->created_at}}</a>, 0 Comments
+                                <a href="#">{{ $blog->created_at }}</a>, 0 Comments
                             </div><!-- End .entry-meta -->
 
                             <h2 class="entry-title">
-                                <a href="{{ route("blogs.detail", ["id"=>$blog->id,"alias"=>$blog->alias]) }}">{{ $blog->title }}</a>
+                                <a
+                                    href="{{ route('blogs.detail', ['id' => $blog->id, 'alias' => $blog->alias]) }}">{{ $blog->title }}</a>
                             </h2><!-- End .entry-title -->
 
                             <div class="entry-content">
@@ -1630,4 +1653,4 @@
                 </div><!-- End .col-lg-3 -->
             @endforeach
         </div>
-@endsection
+    @endsection

@@ -30,7 +30,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="product-gallery product-gallery-separated">
-                                @if( time()- $product->created_at->timestamp < 60*60*24*14)
+                                @if(time() - $product->created_at->timestamp < 60 * 60 * 24 * 14)
                                     <span class="product-label label-new">Mới</span>
                                 @endif
                                 <figure class="product-separated-item">
@@ -76,8 +76,12 @@
                                 </div><!-- End .rating-container -->
 
                                 <div class="product-price">
-                                    <span class="new-price">$190.00</span>
-                                    <span class="old-price">$310.00</span>
+                                    @if($product_option->price_sale != 0)
+                                        <span class="new-price">{{ $product_option->price_sale }}</span>
+                                        <span class="old-price">{{ $product_option->price }}</span>
+                                    @else
+                                        <span class="new-price">{{ $product_option->price }}</span>
+                                    @endif
                                 </div><!-- End .product-price -->
 
                                 <div class="product-content">
@@ -89,22 +93,20 @@
                                 <!-- End .product-countdown -->
 
                                 <div class="details-filter-row details-row-size">
-                                    <label for="size">Size:</label>
+                                    <label for="size">Lựa chọn:</label>
                                     <div class="select-custom">
-                                        <select name="size" id="size" class="form-control">
-                                            <option value="#" selected="selected">Select a size</option>
-                                            <option value="s">Small</option>
-                                            <option value="m">Medium</option>
-                                            <option value="l">Large</option>
-                                            <option value="xl">Extra Large</option>
+                                        <select name="size" id="optionSelect" class="form-control"
+                                            onchange="changeOption()">
+                                            @foreach ($product->product_options as $option)
+                                                <option value="{{ $option->position }}"
+                                                    @selected($option->position == $product_option->position)>{{ $option->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div><!-- End .select-custom -->
-
-                                    <a href="#" class="size-guide"><i class="icon-th-list"></i>size guide</a>
                                 </div><!-- End .details-filter-row -->
 
                                 <div class="details-filter-row details-row-size">
-                                    <label for="qty">Qty:</label>
+                                    <label for="qty">Số lượng:</label>
                                     <div class="product-details-quantity">
                                         <input type="number" id="qty" class="form-control" value="1" min="1" max="10"
                                             step="1" data-decimals="0" required>
@@ -320,30 +322,30 @@
                 <h2 class="title text-center mb-4">You May Also Like</h2><!-- End .title text-center -->
                 <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl"
                     data-owl-options='{
-                                    "nav": false, 
-                                    "dots": true,
-                                    "margin": 20,
-                                    "loop": false,
-                                    "responsive": {
-                                        "0": {
-                                            "items":1
-                                        },
-                                        "480": {
-                                            "items":2
-                                        },
-                                        "768": {
-                                            "items":3
-                                        },
-                                        "992": {
-                                            "items":4
-                                        },
-                                        "1200": {
-                                            "items":4,
-                                            "nav": true,
-                                            "dots": false
-                                        }
-                                    }
-                                }'>
+                                                        "nav": false, 
+                                                        "dots": true,
+                                                        "margin": 20,
+                                                        "loop": false,
+                                                        "responsive": {
+                                                            "0": {
+                                                                "items":1
+                                                            },
+                                                            "480": {
+                                                                "items":2
+                                                            },
+                                                            "768": {
+                                                                "items":3
+                                                            },
+                                                            "992": {
+                                                                "items":4
+                                                            },
+                                                            "1200": {
+                                                                "items":4,
+                                                                "nav": true,
+                                                                "dots": false
+                                                            }
+                                                        }
+                                                    }'>
                     <div class="product product-7">
                         <figure class="product-media">
                             <span class="product-label label-new">New</span>
@@ -555,3 +557,10 @@
         </div><!-- End .page-content -->
     </main><!-- End .main -->
 @endsection
+
+<script>
+    function changeOption() {
+        var optionSelect = document.getElementById("optionSelect").value;
+        window.location.href = "/Products/{{ $product->id }}/{{ $product->alias }}/" + optionSelect + ".html";
+    }
+</script>

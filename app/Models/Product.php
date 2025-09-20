@@ -13,7 +13,7 @@ class Product extends Model
 
     public function product_options()
     {
-        return $this->hasMany(ProductOption::class);
+        return $this->hasMany(ProductOption::class)->orderBy('position', 'asc');
     }
     public function company() {
         return $this->belongsTo(Company::class);
