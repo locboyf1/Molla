@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('blog_comments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('blog_id')->constrained('blogs');
-            $table->foreignId('account_id')->constrained('accounts');
+            $table->foreignId('user_id')->constrained('users');
             $table->text('comment');
             $table->boolean('is_active');
             $table->timestamps();

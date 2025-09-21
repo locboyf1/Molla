@@ -21,7 +21,7 @@ class ProductSeeder extends Seeder
                 'star' => 5,
                 'is_active' => true,
                 'category_product_id' => 1,
-                'account_id' => 1,
+                'user_id' => 1,
                 'company_id'=>1,
                 'alias' => 'Dien_thoai_vivo_v40_lite_8b_256gb',
                 'created_at' => now(),

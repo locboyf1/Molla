@@ -34,7 +34,12 @@
                                     </div><!-- End .header-menu -->
                                 </div>
                             </li>
-                            <li><a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a></li>
+                            @auth
+                            <li><a href="{{route('logout')}}">Đăng xuất</a></li>
+                            @endauth
+                            @guest
+                            <li class='btn btn-primary'><a href="{{route('login')}}">Đăng nhập</a></li>
+                            @endguest
                         </ul>
                     </li>
                 </ul><!-- End .top-menu -->

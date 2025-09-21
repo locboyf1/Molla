@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('image4', 255)->nullable();
             $table->boolean('is_active');
             $table->foreignId('category_product_id')->constrained('category_products');
-            $table->foreignId('account_id')->constrained('accounts');
+            $table->foreignId('user_id')->constrained('users');
             $table->foreignId('company_id')->constrained('companies');
             $table->timestamps();
         });

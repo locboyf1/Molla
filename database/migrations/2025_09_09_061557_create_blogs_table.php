@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->boolean('is_active');
             $table->foreignId('category_blog_id')->constrained('category_blogs');
-            $table->foreignId('account_id')->constrained('accounts');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }

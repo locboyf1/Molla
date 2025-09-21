@@ -23,7 +23,7 @@
                             <div class="entry-body">
                                 <div class="entry-meta">
                                     <span class="entry-author">
-                                        Viết bởi <a href="#">{{ $blog->account->name }}</a>
+                                        Viết bởi <a href="#">{{ $blog->user->name }}</a>
                                     </span>
                                     <span class="meta-separator">|</span>
                                     <a href="#">{{ $blog->created_at->format('H:i - d/m/Y ') }}</a>
@@ -74,23 +74,23 @@
                     <div class="entry-author-details">
                         <figure class="author-media">
                             <a href="#">
-                                <img src="{{ asset($blog->account->avatar) }}" alt="User name">
+                                <img src="{{ asset($blog->user->avatar) }}" alt="User name">
                             </a>
                         </figure><!-- End .author-media -->
 
                         <div class="author-body">
                             <div class="author-header row no-gutters flex-column flex-md-row">
                                 <div class="col">
-                                    <h4><a href="#">{{$blog->account->name}}</a></h4>
+                                    <h4><a href="#">{{$blog->user->name}}</a></h4>
                                 </div><!-- End .col -->
                                 <div class="col-auto mt-1 mt-md-0">
-                                    <a href="#" class="author-link">Xem thêm bài viết của {{ $blog->account->name }} <i
+                                    <a href="#" class="author-link">Xem thêm bài viết của {{ $blog->user->name }} <i
                                             class="icon-long-arrow-right"></i></a>
                                 </div><!-- End .col -->
                             </div><!-- End .row -->
 
                             <div class="author-content">
-                                <p>{{$blog->account->messenger}} </p>
+                                <p>{{$blog->user->messenger}} </p>
                             </div><!-- End .author-content -->
                         </div><!-- End .author-body -->
                     </div><!-- End .entry-author-details-->

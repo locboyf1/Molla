@@ -10,8 +10,8 @@ class Blog extends Model
     {
         return $this->belongsTo(CategoryBlog::class);
     }
-    public function account(){
-        return $this->belongsTo(Account::class);
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 
     
